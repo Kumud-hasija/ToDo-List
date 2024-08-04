@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "title": "Reading Books",
+    "description": "Read one book every day",
+    "done": false,
+    "lastUpdated": "2024-08-05T12:00:00Z"
+  },
+  {
+    "id": 2,
+    "title": "Painting",
+    "description": "i want to do painting half an hour a day",
+    "done": false,
+    "lastUpdated": "2024-08-05T12:00:00Z"
+  },
+  {
+    "id": 2,
+    "title": "Shopping",
+    "description": "i have to go out and buy some grocery",
+    "done": false,
+    "lastUpdated": "2024-08-05T12:00:00Z"
+  }
+]
