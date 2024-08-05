@@ -4,33 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/show.css">
+    <!-- Link to stylesheet -->
     <title>ToDo Tasks</title>
 </head>
 <body>
     <h1 class="heading">ToDo Tasks</h1>
+    <!-- Main heading for the task list -->
     <div class="tasks">
         <div class="task-container">
+            <!-- Container for individual tasks -->
             <% tasks.forEach(task => { %>
+                <!-- Loop through each task -->
                 <div class="task">
+                    <!-- Individual task element -->
                     <input
                         type="checkbox"
                         <%= task.done ? 'checked' : '' %>
+                        <!-- Checkbox for marking task as done -->
                         onchange="document.getElementById('update-form-<%= task.id %>').submit()"
                         class="checkbox"
                     />
                     <form id="update-form-<%= task.id %>" action="/update/<%= task.id %>" method="post" style="display: none;"></form>
+                    <!-- Hidden form for updating task status -->
                     <div class="task-content">
+                        <!-- Content of the task -->
                         <div class="<%= task.done ? 'completed' : '' %>">
+                            <!-- Task title (with styling based on completion) -->
                             <b><%= task.title %></b>
                         </div>
                         <h3><%= task.description %></h3>
+                        <!-- Task description -->
                         <small style="color: darkgrey;">Last updated: <%= new Date(task.lastUpdated).toLocaleString() %></small>
+                        <!-- Last update timestamp -->
                     </div>
                     <div class="button-container">
+                        <!-- Container for buttons -->
                         <form action="/delete/<%= task.id %>" method="post" style="display: inline;">
+                            <!-- Form for deleting a task -->
                             <button class="button" type="submit">Delete</button>
                         </form>
                         <form action="/update/<%= task.id %>" method="get" style="display: inline;">
+                            <!-- Form for updating a task -->
                             <button class="button" type="submit">Update</button>
                         </form>
                     </div>
@@ -39,6 +53,7 @@
         </div>
     </div>
     <div class="add-task-button">
+        <!-- Button to add a new task -->
         <a href="/create" class="button">Add More Tasks</a>
     </div>
 </body>

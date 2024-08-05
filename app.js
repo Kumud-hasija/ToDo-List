@@ -6,11 +6,17 @@ const path = require('path');
 const app = express();
 const port = 8080;
 
+// Set up ejs as the templating engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
+// Use body-parser to handle form data
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Load tasks from the data.json file
 let tasks = require('./init/data.json');
 
 // Render the start page
@@ -18,19 +24,14 @@ app.get('/', (req, res) => {
   res.render('start');
 });
 
-// Handle the home page (this will render index.ejs)
-// Handle the home page (this will render index.ejs)
-// Handle the home page (this will render index.ejs)
+// Handle the home page with search functionality
 app.get('/home', (req, res) => {
   const searchQuery = req.query.search ? req.query.search.toLowerCase() : '';
   const filteredTasks = tasks.filter(task => {
-    // Ensure the task has a title and it's a string
     return typeof task.title === 'string' && task.title.toLowerCase().includes(searchQuery);
   });
   res.render('index', { tasks: filteredTasks, searchQuery });
 });
-
-
 
 // Route for displaying all tasks
 app.get('/show', (req, res) => {
@@ -45,14 +46,14 @@ app.get('/create', (req, res) => {
 // Handle the creation of a new task
 app.post('/create', (req, res) => {
   const { title, description } = req.body;
-  const newtask = {
+  const newTask = {
     id: tasks.length + 1,
     title,
     description,
     done: false,
     lastUpdated: new Date().toISOString()
   };
-  tasks.push(newtask);
+  tasks.push(newTask);
   fs.writeFileSync('./init/data.json', JSON.stringify(tasks, null, 2));
   res.redirect('/show');
 });
@@ -62,7 +63,6 @@ app.get('/update/:id', (req, res) => {
   const { id } = req.params;
   const task = tasks.find(task => task.id === parseInt(id));
   res.render('update', { task });
-
 });
 
 // Route for updating a task
