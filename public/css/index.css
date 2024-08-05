@@ -112,34 +112,21 @@ body {
     font-size: 1rem;
   }
   
-  .search-bar button[type="submit"] {
-    padding: 10px 20px;
-    background-color: #0050ef;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .search-bar button[type="submit"]:hover {
-    background-color: #00bfff;
-  }
-
   .tasks {
     width: 70%;
     padding: 10px;
     background-color: #00bfff;
-    border-radius: 20px 20px 0 0;
+    border-radius: 20px ;
     position: absolute;
     top: 350px; /* Restore previous position */
     left: 50%;
-    height:500px;
+    height:270px;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column; /* Stack items vertically */
     align-items: center; /* Center items horizontally */
     overflow-y: auto; /* Allow scrolling if tasks overflow */
-    max-height: 600px; /* Restrict height */
+    max-height: calc(100vh - 150px); /* Restrict height */
   }
   
   .tasks h3 {
@@ -195,5 +182,21 @@ body {
   
   .task input[type="checkbox"]:checked + div b {
     text-decoration: line-through; /* Strike-through for checked items */
+  }
+
+  .button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #004b8d;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #003b6f;
   }
   

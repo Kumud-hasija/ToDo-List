@@ -2,22 +2,29 @@
   {
     "id": 1,
     "title": "Reading Books",
-    "description": "Read one book every day",
+    "description": "Read one book every day - fiction books , novels etc ",
     "done": false,
-    "lastUpdated": "2024-08-05T12:00:00Z"
+    "lastUpdated": "2024-08-05T14:15:36.397Z"
   },
   {
     "id": 2,
-    "title": "Painting",
-    "description": "i want to do painting half an hour a day",
-    "done": false,
-    "lastUpdated": "2024-08-05T12:00:00Z"
+    "title": "Exercise",
+    "description": "Complete a 30-minute workout and proper diet ",
+    "done": true,
+    "lastUpdated": "2024-08-05T14:28:03.366Z"
   },
   {
-    "id": 2,
-    "title": "Shopping",
-    "description": "i have to go out and buy some grocery",
+    "id": 3,
+    "title": "Grocery Shopping",
+    "description": "Buy groceries for the week",
     "done": false,
-    "lastUpdated": "2024-08-05T12:00:00Z"
+    "lastUpdated": "2024-08-05T13:50:00.000Z"
+  },
+  {
+    "id": 4,
+    "title": "Complete DSA",
+    "description": "Solve 5 questions daily on DSA",
+    "done": true,
+    "lastUpdated": "2024-08-05T14:28:07.345Z"
   }
 ]

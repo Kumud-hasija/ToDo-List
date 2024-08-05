@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Task</title>
+    <link rel="stylesheet" href="/css/create.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Update Task</h1>
+        <form action="/update/<%= task.id %>" method="post" class="create-task-form">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" value="<%= task.title %>" required>
+
+            <label for="description">Description</label>
+            <textarea id="description" name="description" rows="4" required><%= task.description %></textarea>
+
+            <label for="done" class="custom-checkbox-label">
+                <input type="checkbox" id="done" name="done" <%= task.done ? 'checked' : '' %> class="custom-checkbox">
+                <span class="custom-checkbox-box"></span>
+                Completed
+            </label>
+
+            <button type="submit">Update Task</button>
+        </form>
+        <a href="/show" class="back-button">Back</a>
+    </div>
+</body>
+</html>

@@ -3,36 +3,49 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
 
-const app=express();
-const port=8080;
-
+const app = express();
+const port = 8080;
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.set('views', path.join(__dirname, 'views'));
-
 
 let tasks = require('./init/data.json');
 
+// Render the start page
 app.get('/', (req, res) => {
   res.render('start');
 });
 
-app.post('/home', (req, res) => {
-  const searchQuery = req.query.search || '';
-  const filteredTasks = tasks.filter(task =>
-    task.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+// Handle the home page (this will render index.ejs)
+// Handle the home page (this will render index.ejs)
+// Handle the home page (this will render index.ejs)
+app.get('/home', (req, res) => {
+  const searchQuery = req.query.search ? req.query.search.toLowerCase() : '';
+  const filteredTasks = tasks.filter(task => {
+    // Ensure the task has a title and it's a string
+    return typeof task.title === 'string' && task.title.toLowerCase().includes(searchQuery);
+  });
   res.render('index', { tasks: filteredTasks, searchQuery });
 });
 
 
 
-app.post('/create',(req,res)=>{
-    const { title, description } = req.body;
-    const newtask = {
+// Route for displaying all tasks
+app.get('/show', (req, res) => {
+  res.render('show', { tasks });
+});
+
+// Route for creating a new task
+app.get('/create', (req, res) => {
+  res.render('create');
+});
+
+// Handle the creation of a new task
+app.post('/create', (req, res) => {
+  const { title, description } = req.body;
+  const newtask = {
     id: tasks.length + 1,
     title,
     description,
@@ -40,19 +53,37 @@ app.post('/create',(req,res)=>{
     lastUpdated: new Date().toISOString()
   };
   tasks.push(newtask);
-  fs.writeFileSync('./init/data.json', json.stringify(tasks, null, 2));
-  res.redirect('/');
-})
+  fs.writeFileSync('./init/data.json', JSON.stringify(tasks, null, 2));
+  res.redirect('/show');
+});
 
+// Route for rendering the update page
+app.get('/update/:id', (req, res) => {
+  const { id } = req.params;
+  const task = tasks.find(task => task.id === parseInt(id));
+  res.render('update', { task });
+
+});
+
+// Route for updating a task
 app.post('/update/:id', (req, res) => {
-    const { id } = req.params;
-    tasks = tasks.map(task =>
-      task.id === parseInt(id) ? { ...task, done: !task.done } : task
-    );
-    fs.writeFileSync('./init/data.json', json.stringify(tasks, null, 2));
-    res.redirect('/');
-  });
+  const { id } = req.params;
+  tasks = tasks.map(task =>
+    task.id === parseInt(id) ? { ...task, done: !task.done, lastUpdated: new Date().toISOString() } : task
+  );
+  fs.writeFileSync('./init/data.json', JSON.stringify(tasks, null, 2));
+  res.redirect('/show');
+});
 
-app.listen(port,()=>{
-    console.log(`server is listening on port ${port}`);
-})
+// Route for deleting a task
+app.post('/delete/:id', (req, res) => {
+  const { id } = req.params;
+  tasks = tasks.filter(task => task.id !== parseInt(id));
+  fs.writeFileSync('./init/data.json', JSON.stringify(tasks, null, 2));
+  res.redirect('/show');
+});
+
+// Start the server
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
+});
