@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Manager</title>
+</head>
+<body>
+  <h1>Task Manager</h1>
+  <form action="/" method="get">
+    <input
+      type="text"
+      name="search"
+      value="<%= searchQuery %>"
+      placeholder="Search tasks"
+    />
+    <button type="submit">Search</button>
+  </form>
+  <form action="/add" method="post">
+    <input type="text" name="title" placeholder="Task title" required />
+    <textarea name="description" placeholder="Task description"></textarea>
+    <button type="submit">Add Task</button>
+  </form>
+  <ul>
+    <% tasks.forEach(task => { %>
+      <li>
+        <form action="/update/<%= task.id %>" method="post" style="display: inline;">
+          <input
+            type="checkbox"
+            <%= task.done ? 'checked' : '' %>
+            onchange="this.form.submit()"
+          />
+        </form>
+        <%= task.title %> - <%= task.description %>
+        <small>Last updated: <%= new Date(task.lastUpdated).toLocaleString() %></small>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>

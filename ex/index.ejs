@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><%= date.toDateString() %></h1>
+        </div>
+        <div class="tasks">
+            <div class="task">
+                <div class="task-icon">📚</div>
+                <div class="task-info">
+                    <h2>Reading Books</h2>
+                    <p>Read every day</p>
+                </div>
+            </div>
+            <div class="task">
+                <div class="task-icon">🎨</div>
+                <div class="task-info">
+                    <h2>Painting</h2>
+                    <p>Half an hour a day</p>
+                </div>
+            </div>
+            <div class="task">
+                <div class="task-icon">💰</div>
+                <div class="task-info">
+                    <h2>Save Money</h2>
+                    <p>Five dollars a day</p>
+                </div>
+            </div>
+            <div class="task">
+                <div class="task-icon">⛰️</div>
+                <div class="task-info">
+                    <h2>Climb Mountains</h2>
+                    <p>Three hours today</p>
+                </div>
+            </div>
+            <button id="add-task-btn">Add New Task</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

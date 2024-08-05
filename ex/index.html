@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
+  <title>ToDo Task</title>
+</head>
+<body>
+  <div class="heading">
+    <h1> ToDo Tasks </h1>
+  </div>
+
+  
+  <div class="container">
+    <div class="swiper">
+      <div class="card"><h3>1</h3></div>
+      <div class="card"><h3>2</h3></div>
+      <div class="card"><h3>3</h3></div>
+      <div class="card"><h3>4</h3></div>
+      <div class="card"><h3>5</h3></div>
+      <div class="card"><h3>6</h3></div>
+      <div class="card"><h3>7</h3></div>
+      <div class="card"><h3>8</h3></div>
+      <div class="card"><h3>9</h3></div>
+      <div class="card"><h3>10</h3></div>
+      <div class="card"><h3>11</h3></div>
+      <div class="card"><h3>12</h3></div>
+      <div class="card"><h3>13</h3></div>
+      <div class="card"><h3>14</h3></div>
+      <div class="card"><h3>15</h3></div>
+      <div class="card"><h3>16</h3></div>
+      <div class="card"><h3>17</h3></div>
+      <div class="card"><h3>18</h3></div>
+      <div class="card"><h3>19</h3></div>
+      <div class="card"><h3>20</h3></div>
+      <div class="card"><h3>21</h3></div>
+      <div class="card"><h3>22</h3></div>
+      <div class="card"><h3>23</h3></div>
+      <div class="card"><h3>24</h3></div>
+      <div class="card"><h3>25</h3></div>
+      <div class="card"><h3>26</h3></div>
+      <div class="card"><h3>27</h3></div>
+      <div class="card"><h3>28</h3></div>
+      <div class="card"><h3>29</h3></div>
+      <div class="card"><h3>30</h3></div>
+      <div class="card"><h3>31</h3></div>
+    </div>
+  </div>
+  
+  <div class="search-bar">
+    <form action="/" method="get">
+      <input
+        type="text"
+        name="search"
+        value="<%= searchQuery %>"
+        placeholder="Search tasks"
+      />
+      <button type="submit">Search</button>
+    </form>
+  </div>
+<div class="tasks">
+  <h3> click to view more </h3>
+  <ul>
+    <% tasks.forEach(task => { %>
+      <div class="task">
+      <li>
+        <form action="/update/<%= task.id %>" method="post" style="display: inline;">
+          <input
+            type="checkbox"
+            <%= task.done ? 'checked' : '' %>
+            onchange="this.form.submit()"
+          />
+        </form>
+        <%= task.title %> 
+        <small>Last updated: <%= new Date(task.lastUpdated).toLocaleString() %></small>
+      </li>
+      </div>
+    <% }) %>
+  </ul>
+</div>
+
+</body>
+</html>
