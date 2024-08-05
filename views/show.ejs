@@ -20,7 +20,6 @@
                     <input
                         type="checkbox"
                         <%= task.done ? 'checked' : '' %>
-                        <!-- Checkbox for marking task as done -->
                         onchange="document.getElementById('update-form-<%= task.id %>').submit()"
                         class="checkbox"
                     />
