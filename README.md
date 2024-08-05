@@ -1,8 +1,8 @@
-ToDo List Application
+**ToDo List Application**
 
 This repository contains a simple ToDo List application built with Node.js, Express, EJS, and a touch of client-side JavaScript. The app allows users to create, view, update, delete, and mark tasks as complete.
 
-Features:
+**Features:**
 
     Task Creation: Users can add new tasks with titles, descriptions, and last updated timestamps.
     Task List: All tasks are displayed in a list format.
@@ -12,7 +12,7 @@ Features:
     Search: The home page allows users to search for tasks by keywords in the title.
     Data Persistence: Task data is stored in a file, ensuring persistence between sessions.
 
-Getting Started:
+**Getting Started:**
 
     Clone the Repository:
 
@@ -29,14 +29,14 @@ Run the Server:
     Access the Application: Open your web browser and navigate to http://localhost:8080.
 
 
-Key Technologies:
+**Key Technologies:**
 
     Node.js: The runtime environment for the server.
     Express: A popular Node.js web framework for building web applications.
     EJS: A templating engine for rendering dynamic HTML.
     JSON: Used to store task data.
 
-Sample Images -
+**Sample Images -**
 1. start page 
 ![image](image.png)
 
