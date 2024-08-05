@@ -1,0 +1,124 @@
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('/images/background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  font-family: sans-serif;
+  height: 100vh;
+}
+
+.heading {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 3rem;
+  z-index: 10;
+  text-align: center;
+}
+
+.tasks {
+  width: 70%;
+  padding: 20px;
+  background-color: #0038a8;
+  border-radius: 20px 20px 0 0;
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  height: 500px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  overflow-y: auto; /* Allow scrolling if tasks overflow */
+  max-height: 600px; /* Restrict height */
+}
+
+.tasks h3 {
+  margin: 0;
+  padding: 10px;
+  color: #fff;
+  text-align: center; /* Center text */
+}
+
+.task-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping of task divs */
+  gap: 10px; /* Space between task divs */
+  width: 100%; /* Full width of the tasks container */
+  align-items: center;
+  justify-content: center;
+}
+
+.task {
+  padding: 20px;
+  height: 120px;
+  width: 70%;
+  background-color: #00297b;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box; /* Ensure padding is included in width calculation */
+  margin: 10px;
+}
+
+.task form {
+  display: flex;
+  align-items: center;
+  width: 100%; /* Full width of the task container */
+}
+
+.task input[type="checkbox"] {
+  margin-right: 20px; /* Space between checkbox and text */
+}
+
+.task div {
+  display: flex;
+  flex-direction: column;
+}
+
+.task h3 {
+  font-size: 1rem; /* Adjusted font size */
+  color: hsl(220, 96%, 81%);
+  margin: 5px 0; /* Space between the title and description */
+}
+
+.task div b {
+  font-size: 1.2rem; /* Adjusted font size for the task title */
+  color: #fff;
+}
+
+.task input[type="checkbox"]:checked + div b {
+  text-decoration: line-through; /* Strike-through for checked items */
+}
+
+.add-task-button {
+  margin-top: auto; /* Push button to the bottom of the task container */
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #000000;
+  background-color:  #00bfff;; /* Adjust background color */
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #fff; 
+  /* Darker shade on hover */
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/show.css">
+    <title>ToDo Tasks</title>
+</head>
+<body>
+    <h1 class="heading">ToDo Tasks</h1>
+    <div class="tasks">
+    <div class="task-container">
+        <% tasks.forEach(task => { %>
+            <div class="task">
+                <form action="/update/<%= task.id %>" method="post">
+                    <input
+                        type="checkbox"
+                        <%= task.done ? 'checked' : '' %>
+                        onchange="this.form.submit()"
+                    />
+                    <div>
+                        <div <%= task.done ? 'completed' : '' %>">
+                            <b><%= task.title %></b>
+                        </div>
+                        <h3><%= task.description %></h3>
+                        <small style="color: darkgrey;">Last updated: <%= new Date(task.lastUpdated).toLocaleString() %></small>
+                    </div>
+                </form>
+            </div>
+        <% }) %>
+    </div> 
+    <div class="add-task-button">
+        <a href="/create" class="button">Add More Tasks</a>
+    </div>
+</div> 
+
+</body>
+</html>
