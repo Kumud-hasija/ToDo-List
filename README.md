@@ -12,22 +12,28 @@ This repository contains a simple ToDo List application built with Node.js, Expr
     Search: The home page allows users to search for tasks by keywords in the title.
     Data Persistence: Task data is stored in a file, ensuring persistence between sessions.
 
+**Live Demo:**
+
+[Open the ToDo App](https://todo-app-nodejs-7umu.onrender.com)
+
 **Getting Started:**
 
-    Clone the Repository:
+Clone the Repository:
 
     git clone https://github.com/your-username/todo-list.git
 
 Install Dependencies:
 
-cd todo-list
-npm install
+    cd todo-list
+    npm install
 
 Run the Server:
 
     npm app.js
-    Access the Application: Open your web browser and navigate to http://localhost:8080.
 
+Access the Application: 
+    Open your browser and navigate to:
+    http://localhost:8080
 
 **Key Technologies:**
 
